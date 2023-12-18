@@ -1,15 +1,74 @@
-name: Cypress Tests
+name: Pruebas de Cypress
 
-on: push
+on:
+    pull_request:
+    push:
+        branches: master
 
 jobs:
-  cypress-run:
+  cypress-chrome-run:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Cypress run
+      - name: Cypress run on Chrome
         uses: cypress-io/github-action@v6
         with:
             browser: chrome
-            record: true
+      - name: Upload screenshots
+        uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+            name: cypress-screenshots
+            path: cypress/screenshots
+      - name: Upload videos
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+            name: cypress-videos
+            path: cypress/videos
+    
+  cypress-edge-run:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Cypress run on Chrome
+        uses: cypress-io/github-action@v6
+        with:
+            browser: edge
+      - name: Upload screenshots
+        uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+            name: cypress-screenshots
+            path: cypress/screenshots
+      - name: Upload videos
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+            name: cypress-videos
+            path: cypress/videos
+    
+  cypress-firefox-run:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Cypress run on Chrome
+        uses: cypress-io/github-action@v6
+        with:
+            browser: firefox
+      - name: Upload screenshots
+        uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+            name: cypress-screenshots
+            path: cypress/screenshots
+      - name: Upload videos
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+            name: cypress-videos
+            path: cypress/videos
+    
