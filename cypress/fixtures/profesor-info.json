@@ -1,0 +1,22 @@
+{
+  "values": {
+    "boleta_inexistente": "20086031",
+    "boleta_existente": "100",
+    "original": {
+      "nombre": "CEJA MENA LUIS IGNACIO",
+      "academias": "NO ESPECIFICADA",
+      "correo": "correopru2222eba@gmail.com"
+    },
+    "edited": {
+      "nombre": "GARCIA ZAVALA EDUARDO GAMALIEL",
+      "academias": "INFORMATICA",
+      "correo": "eduardo@gmail.com"
+    }
+  },
+  "errors": {
+    "no_exists": "No existe ningun profesor con el ID"
+  },
+  "success":{
+    "edited": "PROFESOR EDITADO correctamente"
+  }
+}
