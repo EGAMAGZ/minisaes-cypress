@@ -58,10 +58,18 @@ describe("Prueba Editar profesor", () => {
         cy.url().should("include", "#/editar-profesor?datos=100");
     });
 
-    it("Editar datos de Profesor", () => {
+    it("Editar datos de Profesor de manera incorrecta", () => {
         cy.get("td[aria-colindex=6] > button").click();
 
-        cy.url().should("include", "#/editar-profesor?datos=100");
+        cy.get("form").within(($form) => {
+            cy.get("input[id=input-8]").type("a");
+        });
+
+        cy.get("div.modal-body > p").should("contain", "Ingrese un número válido (Max. 13 digitos)");
+    })
+
+    it("Editar datos de Profesor", () => {
+        cy.get("td[aria-colindex=6] > button").click();
 
         cy.fixture("profesor-info.json").then(profesor => {
             cy.get("form").within(($form) => {
