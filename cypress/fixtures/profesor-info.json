@@ -14,7 +14,8 @@
     }
   },
   "errors": {
-    "no_exists": "No existe ningun profesor con el ID"
+    "no_exists": "No existe ningun profesor con el ID",
+    "invalid_number": "Ingrese un número válido (Max. 13 digitos)"
   },
   "success":{
     "edited": "PROFESOR EDITADO correctamente"

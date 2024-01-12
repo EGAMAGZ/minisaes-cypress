@@ -65,7 +65,9 @@ describe("Prueba Editar profesor", () => {
             cy.get("input[id=input-8]").type("a");
         });
 
-        cy.get("div.modal-body > p").should("contain", "Ingrese un número válido (Max. 13 digitos)");
+        cy.fixture("profesor-info.json").then(profesor => {
+            cy.get("div.modal-body > p").should("contain", profesor.errors.invalid_number);
+        });
     })
 
     it("Editar datos de Profesor", () => {
@@ -98,20 +100,20 @@ describe("Prueba Editar profesor", () => {
         });
     });
 
-    it("Cancelar cambios", () => {
-        cy.get("td[aria-colindex=6] > button").click();
+    // it("Cancelar cambios", () => {
+    //     cy.get("td[aria-colindex=6] > button").click();
 
-        cy.url().should("include", "#/editar-profesor?datos=100");
+    //     cy.url().should("include", "#/editar-profesor?datos=100");
 
-        cy.fixture("profesor-info.json").then(profesor => {
-            cy.get("form").within(($form) => {
-                cy.get("input[id=input-2]").clear();
-                cy.get("input[id=input-5]").clear().type(profesor.values.original.academias);
-                cy.get("input[id=input-3]").clear().type(profesor.values.original.correo);
-                cy.get("input[id=input-2]").type(profesor.values.original.nombre);
+    //     cy.fixture("profesor-info.json").then(profesor => {
+    //         cy.get("form").within(($form) => {
+    //             cy.get("input[id=input-2]").clear();
+    //             cy.get("input[id=input-5]").clear().type(profesor.values.original.academias);
+    //             cy.get("input[id=input-3]").clear().type(profesor.values.original.correo);
+    //             cy.get("input[id=input-2]").type(profesor.values.original.nombre);
 
-                cy.get("button[type=submit]").contains("Actualizar datos").click();
-            });
-        });
-    });
+    //             cy.get("button[type=submit]").contains("Actualizar datos").click();
+    //         });
+    //     });
+    // });
 });

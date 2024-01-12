@@ -54,7 +54,6 @@ describe('Prueba de inicio de sesion', () => {
   });
 
 
-  // TODO: Esta prueba falla debido a incidencias (Ya reportado)
   it("Regresa a la pantalla de inicio de sesión", () => {
     cy.fixture("admin-credentials.json").then(admin => {
       cy.get("#email").type(admin.values.email);
