@@ -31,6 +31,8 @@ describe('Prueba de inicio de sesion', () => {
       cy.get("#password").type(admin.values.password);
     });
     cy.get("button[type=submit]").click();
+    
+    cy.url().should("not.include", "/#/inicio");
   })
 
   it("Inicar sesión con credenciales vacias", () => {
